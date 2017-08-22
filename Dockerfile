@@ -44,7 +44,7 @@ RUN \
     export CPPFlAGS="-D_BSD_SOURCE $CPPFLAGS" && \
     # Configure
     ./otp_build autoconf && \
-    ./configure --prefix=/usr \
+    ./configure --prefix=/usr/local \
       --sysconfdir=/etc \
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
@@ -71,7 +71,8 @@ RUN \
       --enable-threads \
       --enable-shared-zlib \
       --enable-ssl=dynamic-ssl-lib \
-      --enable-hipe && \
+      --enable-hipe \
+      --enable-dirty-schedulers && \
     # Build
     make -j4 && make install && \
     # Cleanup
